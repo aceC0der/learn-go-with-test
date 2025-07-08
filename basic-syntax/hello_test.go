@@ -1,17 +1,27 @@
 package basic
 
 import (
-	"fmt"
 	"learn-go-with-tests/message-handler"
 	"testing"
 )
 
 func TestHello(t *testing.T) {
-	got := SayHello()
-	want := "Hello, Go with test"
+	// group tests
+	t.Run("Say hello to go by sending empty string", func(t *testing.T) {
+		got := SayHello("")
+		want := "Hello, Go with test"
+	
+		if got != want {
+			message.PrintError(t, &got, &want);
+		}
+	})
 
-	if got!=want {
-		errorMessage := fmt.Sprintf("got %s want %s\n",got, want);
-		message.PrintError(t, &errorMessage);
-	}
+	t.Run("Say hello to people by sending their name", func(t *testing.T){
+		got := SayHello("Mridul")
+		want := "Hello, Mridul"
+	
+		if got != want {
+			message.PrintError(t, &got, &want);
+		}
+	})
 }

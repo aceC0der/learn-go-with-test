@@ -1,5 +1,9 @@
 package basic
 
-func SayHello() string {
-	return "Hello, Go with test"
+const englishHelloPrefix = "Hello, "
+func SayHello(name string) string {
+	if name=="" {
+		name = "Go with test"
+	}
+	return englishHelloPrefix + name
 }

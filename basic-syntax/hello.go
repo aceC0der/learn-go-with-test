@@ -1,9 +1,19 @@
 package basic
 
 const englishHelloPrefix = "Hello, "
-func SayHello(name string) string {
-	if name=="" {
+const spanishHelloPrefix = "Hola, "
+func SayHello(name string, language string) string {
+	if name == "" {
 		name = "Go with test"
 	}
-	return englishHelloPrefix + name
+
+	var prefix string
+	switch language {
+	case "Spanish":
+		prefix = spanishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+
+	return prefix + name
 }

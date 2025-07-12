@@ -1,10 +1,26 @@
 package main
 
-import (
-	"fmt"
-	"learn-go-with-tests/go-fundamentals/helloworld"
-)
+import "fmt"
+
+type RockClimber struct {
+	rocksClimbed int
+}
+
+func (rc *RockClimber) placeSafeties() {
+	fmt.Println("placing my safties...")
+}
+
+func (rc *RockClimber) climbRock() {
+	rc.rocksClimbed++
+	if rc.rocksClimbed == 10 {
+		rc.placeSafeties()
+	}
+}
+
 
 func main() {
-	fmt.Println(basic.SayHello("Mridul", "Spanish"))
+	rc := &RockClimber{}
+	for range 11 {
+		rc.climbRock()
+	}
 }
